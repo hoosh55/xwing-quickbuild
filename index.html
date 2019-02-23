@@ -1,0 +1,376 @@
+<html lang="en" >
+<head>
+  <title>X-Wing Quick Build</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+  <link rel="stylesheet" href="./vendor/xwing-miniatures-font/dist/xwing-miniatures.css">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet">
+</head>
+<style>
+  .threatBlock {
+    width: 40px;
+    height: 8px;
+    margin: 0px 4px 0px;
+    border-radius: 4px;
+    border: 1px solid;
+  }
+
+  .threatBlock.inactive {
+    background-color: transparent !important;
+    border-color: #9E9E9E !important;
+  }
+
+  .pilotCard {
+    max-width: 400px;
+    width: 100%;
+    opacity: .25;
+    font-weight: medium;
+  }
+
+  .pilotCard.active {
+    opacity: 1 !important;
+  }
+
+  .pilotTitle {
+    text-align: center;
+    margin-bottom: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-variant: small-caps;
+  }
+
+  .pilotUpgrade {
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+
+  .navbar-logo {
+    height: 32px;
+    margin-right: 16px;
+  }
+
+  .branded {
+    font-family: 'Orbitron', sans-serif;
+    font-variant: small-caps;
+  }
+
+  #bottomNav {
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid #E0E0E0;
+    z-index: 10;
+    height: 48px;
+    width: 100%;
+  }
+
+  #content {
+    position: fixed;
+    top: 62px;
+    bottom: 48px;
+    padding: 8px;
+    overflow-y: auto;
+  }
+
+  #topNav {
+    position: fixed;
+    top: 0;
+    background-color: #212121;
+  }
+</style>
+<body ng-app="QuickBuildApp" ng-controller="QuickBuildCtrl" ng-cloak layout="column" layout-align="start stretch">
+  <!--<md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+        <i class="xwing-miniatures-font xwing-miniatures-font-{currentFaction.xws}"></i>
+      </md-button>
+      <img class="navbar-logo" src="./img/logo.svg" alt="">
+
+      <h2 class="branded" flex>Quick Build</h2>
+
+      <md-button class="md-icon-button" aria-label="">
+        <i class="xwing-miniatures-font xwing-miniatures-font-epic"></i>
+      </md-button>
+
+    </div>
+  </md-toolbar>-->
+
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+      <md-list>
+        <md-subheader class="md-no-sticky">{{selectedFaction.name}}</md-subheader>
+        <md-list-item ng-repeat="ship in data.ships" ng-if="ship.faction === selectedFaction.xws" ng-click="toggleShip(ship.xws)">
+          <p>{{ship.name}}</p>
+          <md-checkbox class="md-secondary" ng-checked="selectedShips.indexOf(ship.xws) > -1"></md-checkbox>
+        </md-list-item>
+      </md-list>
+    </md-sidenav>
+    <div layout="row" layout-wrap flex style="overflow-y: auto;">
+      <md-card class="pilotCard" ng-repeat="build in data.quickBuilds | orderBy:'threat':true | filter:selectedFilter | filter:costFilter" ng-class="{'active':!((currentBuildIDs.indexOf(build.id) > -1 && build.unique) || (totalThreat + build.threat > 8))}">
+        <img ng-src="{{build.pilots[0].artwork}}" class="md-card-image" alt="{{build.pilots[0].name}}">
+        <div layout="column" style="padding: 24px 16px 16px;">
+          <div class="md-headline pilotTitle"><span ng-repeat="l in getArray(build.pilots[0].limited) track by $index" style="margin-right: 8px;"><i class="xwing-miniatures-font xwing-miniatures-font-unique"></i></span>{{build.pilots[0].name}}</div>
+          <div class="md-subhead pilotTitle">{{build.pilots[0].ship.name}}</div>
+          <div style="margin: 8px;" layout="row" layout-align="center center">
+            <div class="threatBlock" ng-style="{'background-color':getThreatColor(build.threat),'border-color':getThreatColor(build.threat)}" ng-class="{inactive: $index >= build.threat}" ng-repeat="t in getArray(6) track by $index"></div>
+          </div>
+        </div>
+        <md-card-content ng-repeat="pilot in build.pilots track by $index" flex>
+          <div class="md-headline pilotTitle" ng-if="$index !== 0"><span ng-repeat="l in getArray(pilot.limited) track by $index" style="margin-right: 8px;">&bull;</span>{{pilot.name}}</div>
+          <div class="md-subhead pilotTitle" ng-if="$index !== 0">{{pilot.ship.name}}</div>
+          <div layout="row" layout-wrap>
+            <div class="pilotUpgrade" ng-repeat="upgrade in pilot.upgrades track by $index" flex="50"><i class="xwing-miniatures-font xwing-miniatures-font-{{upgrade.type}}"></i> {{upgrade.name}}</div>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="center center">
+          <md-button ng-click="addBuild(build)" ng-disabled="(currentBuildIDs.indexOf(build.id) > -1 && build.unique) || (totalThreat + build.threat > 8)">Add</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </section>
+
+  <!--<md-toolbar>
+    <div class="md-toolbar-tools">
+      <div class="threatBlock" ng-class="{inactive: $index >= totalThreat}" ng-repeat="t in getArray(8) track by $index"></div>
+    </div>
+  </md-toolbar>-->
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+
+  <!-- Your application bootstrap  -->
+  <script type="text/javascript">
+    angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
+    .config(function($mdThemingProvider) {
+      $mdThemingProvider.theme("default")
+        .primaryPalette("blue")
+        .accentPalette("blue");
+    })
+
+    .controller("QuickBuildCtrl", function appCtrl($scope, $http, $q, $timeout) {
+      $scope.currentBuild = [];
+      $scope.currentBuildIDs = [];
+      $scope.totalThreat = 0;
+      $scope.selectedFaction = {};
+      $scope.selectedShips = [];
+
+      function init() {
+        //var vendorDir = "https://raw.githubusercontent.com/guidokessels/xwing-data2/master/";
+        var vendorDir = "./vendor/xwing-data2/"
+        loadJSON(vendorDir, "data/manifest.json").then(function(res) {
+          var manifest = res.data;
+          $scope.data = {
+            "upgrades":[],
+            "pilots":[],
+            "ships":[],
+            "factions":[],
+            "quickBuilds":[]
+          };
+          //load upgrades
+          for (var upgradePath of manifest.upgrades) {
+            loadJSON(vendorDir, upgradePath).then(function(res){
+              for (var upgrade of res.data) {
+                upgrade.type = xwsParse(fileNameParse(res.fileName));
+                $scope.data.upgrades.push(upgrade);
+              }
+            }, function(reason) {
+              alert('Failed: ' + reason);
+            });
+          }
+          //load ships
+          for (var faction of manifest.pilots) {
+            for (var shipPath of faction.ships) {
+              loadJSON(vendorDir, shipPath, faction.faction).then(function(res){
+                var ship_xws = xwsParse(fileNameParse(res.fileName));
+                res.data.faction = res.faction;
+                $scope.data.ships.push(res.data)
+                for (var pilot of res.data.pilots) {
+                  pilot.faction_xws = res.faction;
+                  pilot.ship = res.data;
+                  pilot.ship.xws = ship_xws;
+                  $scope.data.pilots.push(pilot);
+                }
+              }, function(reason) {
+                alert('Failed: ' + reason);
+              });
+            }
+          }
+          //load factions
+          for (var faction of manifest.factions) {
+            loadJSON(vendorDir, faction).then(function(res){
+              $scope.data.factions = res.data;
+            });
+          }
+          //load quickbuilds
+          for (var quickbuildPath of manifest["quick-builds"]){
+            loadJSON(vendorDir, quickbuildPath).then(function(res){
+              for (var build of res.data['quick-builds']) {
+                build.faction = xwsParse(fileNameParse(res.fileName));
+                $scope.data.quickBuilds.push(build);
+              }
+            }, function(reason) {
+              alert('Failed: ' + reason);
+            });
+          }
+
+          $timeout(function() {
+            $scope.data.quickBuilds.forEach(function(build, $index){
+              build.id = $index;
+              var pilotArray = [];
+              build.pilots.forEach(function(pilot){
+                var upgradeArray = [];
+                for (key in pilot.upgrades){
+                  pilot.upgrades[key].forEach(function(upgrade){
+                    upgradeArray.push($scope.getUpgrade(upgrade))
+                  })
+                }
+                var updatedPilot = $scope.getPilot(pilot.id);
+                if (updatedPilot.limited > 0){
+                  build.unique = true;
+                }
+                updatedPilot.upgrades = upgradeArray;
+                pilotArray.push(updatedPilot);
+              });
+              build.pilots = pilotArray;
+            });
+            $scope.selectFaction($scope.data.factions[0])
+            console.log($scope.data)
+          }, 5000)
+        }, function(reason) {
+          alert('Failed: ' + reason);
+        });
+      }
+
+      $scope.addBuild = function(build){
+        $scope.currentBuild.push(build);
+        $scope.currentBuildIDs.push(build.id)
+        $scope.totalThreat = 0;
+        $scope.currentBuild.forEach(function(build){
+          $scope.totalThreat += build.threat;
+        })
+      }
+
+      $scope.removeBuild = function(build){
+        var buildIndex = $scope.currentBuild.indexOf(build);
+        var buildIDIndex = $scope.currentBuildIDs.indexOf(build.id);
+        $scope.currentBuild.splice(buildIndex, 1);
+        $scope.currentBuildIDs.splice(buildIDIndex, 1);
+        $scope.totalThreat = 0;
+        $scope.currentBuild.forEach(function(build){
+          $scope.totalThreat += build.threat;
+        })
+      }
+
+      $scope.selectFaction = function(faction){
+        $scope.selectedFaction = faction;
+        $scope.selectedShips = [];
+        $scope.data.ships.forEach(function(ship){
+          if (ship.faction === faction.xws){
+            $scope.selectedShips.push(ship.xws);
+          }
+        })
+      }
+
+      $scope.toggleShip = function(ship){
+        var shipIndex = $scope.selectedShips.indexOf(ship);
+        if (shipIndex > -1){
+          $scope.selectedShips.splice(shipIndex, 1);
+        } else {
+          $scope.selectedShips.push(ship);
+        }
+      }
+
+      $scope.selectedFilter = function(build){
+        var filterBuild = true;
+        if (build.faction === $scope.selectedFaction.xws){
+          build.pilots.forEach(function(pilot){
+            if ($scope.selectedShips.indexOf(pilot.ship.xws) > -1){
+              filterBuild = false;
+            }
+          })
+        }
+        if (!filterBuild){
+          return build;
+        }
+      }
+
+      $scope.costFilter = function(build){
+        if (!($scope.currentBuildIDs.indexOf(build.id) > -1 && build.unique) && ($scope.totalThreat + build.threat <= 8)){
+          return build;
+        }
+      }
+
+      $scope.getPilot = function(pilot_xws) {
+        for (var s = 0; s < $scope.data.pilots.length; ++s) {
+          var pilot = $scope.data.pilots[s];
+          if (pilot.xws === pilot_xws) {
+            return pilot;
+          }
+        }
+        console.warn("Unknown pilot ", pilot_xws);
+        return null;
+      }
+
+      $scope.getShip = function(ship_xws) {
+        for (var s = 0; s < $scope.data.pilots.length; ++s) {
+          var pilot = $scope.data.pilots[s];
+          if (pilot.ship.xws === ship_xws ) {
+            return pilot.ship;
+          }
+        }
+        console.warn("Unknown pilot ", pilot_xws, ship_xws);
+        return null;
+      }
+
+      $scope.getUpgrade = function(name) {
+        for (var t = 0; t < $scope.data.upgrades.length; ++t) {
+          var upgrade = $scope.data.upgrades[t];
+          if (upgrade.xws === name) {
+            return upgrade;
+          }
+        }
+        console.warn("Unknown upgrade ", name);
+        return null;
+      }
+
+      function xwsParse(fullname) {
+        return fullname.toLowerCase().replace(/[\W]+/g,"");;
+      }
+
+      function fileNameParse(path) {
+        return path.split(/(\\|\/)/g).pop().replace(".json", "");
+      }
+
+      function loadJSON(path, fileName, faction) {
+        var deferred = $q.defer();
+
+        $q(function(resolve, reject) {
+          $http.get(path + fileName).then(function(res){
+            deferred.resolve({'data':res.data,'fileName':fileName, 'faction':faction});
+          });
+        });
+
+        return deferred.promise;
+      }
+
+      $scope.getArray = function(len) {
+        return new Array(len);
+      }
+
+      $scope.getThreatColor = function(index){
+        var colors = ["#4CAF50","#FFEB3B","#FF9800","#F44336","#E91E63","#9C27B0"]
+        return colors[index - 1]
+      }
+
+      init();
+    })
+  </script>
+
+</body>
+</html>
