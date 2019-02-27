@@ -1,13 +1,13 @@
 angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme("default")
-    .primaryPalette("blue")
-    .accentPalette("blue");
+    .primaryPalette("red")
+    .accentPalette("red");
 })
 
-.controller("QuickBuildCtrl", function appCtrl($scope, $http, $q, $timeout, $mdPanel) {
-  $scope.currentBuild = [];
-  $scope.currentBuildIDs = [];
+.controller("QuickBuildCtrl", function appCtrl($scope, $http, $q, $timeout, $mdPanel, $mdDialog) {
+  $scope.currentList = [];
+  $scope.currentListIDs = [];
   $scope.totalThreat = 0;
   $scope.selectedFaction = {};
   $scope.selectedShips = [];
@@ -61,11 +61,12 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
         });
       }
       //load quickbuilds
+      var quickBuilds = [];
       for (var quickbuildPath of manifest["quick-builds"]){
         loadJSON(vendorDir, quickbuildPath).then(function(res){
           for (var build of res.data['quick-builds']) {
             build.faction = xwsParse(fileNameParse(res.fileName));
-            $scope.data.quickBuilds.push(build);
+            quickBuilds.push(build);
           }
         }, function(reason) {
           alert('Failed: ' + reason);
@@ -74,7 +75,6 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
 
       $timeout(function() {
         $scope.data.quickBuilds.forEach(function(build, $index){
-          build.id = $index;
           var pilotArray = [];
           build.pilots.forEach(function(pilot){
             var upgradeArray = [];
@@ -93,8 +93,12 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
             pilotArray.push(pilotCard);
           });
           build.pilots = pilotArray;
+          build.id = $index;
+          build.name = build.pilots[0].name;
+          build.ship = build.pilots[0].ship.name;
         });
-        $scope.selectFaction($scope.data.factions[0])
+        $scope.quickBuildOrderChange('id',false)
+        $scope.selectFaction($scope.data.factions[1])
         console.log($scope.data)
       }, 5000)
     }, function(reason) {
@@ -102,22 +106,49 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
     });
   }
 
+  $scope.quickBuildOrderChange = function(expression, reverse){
+    $scope.quickBuildOrder = {
+      'expression':expression,
+      'reverse':reverse
+    }
+  }
+
   $scope.addBuild = function(build){
-    $scope.currentBuild.push(build);
-    $scope.currentBuildIDs.push(build.id)
-    $scope.totalThreat = 0;
-    $scope.currentBuild.forEach(function(build){
-      $scope.totalThreat += build.threat;
+    var pilots = [];
+    build.pilots.forEach(function(pilot){
+      var upgrades = [];
+      pilot.upgrades.forEach(function(upgrade){
+        upgrades.push({
+          'name':upgrade.name,
+          'type':upgrade.type,
+          'xws':upgrade.xws
+        })
+      })
+      pilots.push({
+        'name':pilot.name,
+        'pilotXWS':pilot.xws,
+        'limited':pilot.limited,
+        'ship':pilot.ship.name,
+        'shipXWS':pilot.ship.xws,
+        'upgrades':upgrades
+      });
     })
+    $scope.currentList.push({
+      'pilots': pilots,
+      'threat': build.threat
+    });
+    $scope.currentListIDs.push(build.id)
+    $scope.totalThreat += build.threat;
+    console.log($scope.currentList);
   }
 
   $scope.removeBuild = function(build){
-    var buildIndex = $scope.currentBuild.indexOf(build);
-    var buildIDIndex = $scope.currentBuildIDs.indexOf(build.id);
-    $scope.currentBuild.splice(buildIndex, 1);
-    $scope.currentBuildIDs.splice(buildIDIndex, 1);
+    var buildIndex = $scope.currentList.indexOf(build);
+    var buildIDIndex = $scope.currentListIDs.indexOf(build.id);
+    $scope.currentList.splice(buildIndex, 1);
+    $scope.currentListIDs.splice(buildIDIndex, 1);
     $scope.totalThreat = 0;
-    $scope.currentBuild.forEach(function(build){
+    $scope.currentList.forEach(function(build){
       $scope.totalThreat += build.threat;
     })
   }
@@ -154,6 +185,7 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
 
   $scope.toggleShip = function(ship, ev){
     ev.preventDefault();
+    console.log(ship);
     var shipIndex = $scope.selectedShips.indexOf(ship);
     if (shipIndex > -1){
       $scope.selectedShips.splice(shipIndex, 1);
@@ -163,21 +195,22 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
   }
 
   $scope.selectedFilter = function(build){
-    var filterBuild = true;
+    var hasShip = false;
     if (build.faction === $scope.selectedFaction.xws){
       build.pilots.forEach(function(pilot){
         if ($scope.selectedShips.indexOf(pilot.ship.xws) > -1){
-          filterBuild = false;
+          //console.log(pilot.ship.xws)
+          hasShip = true;
         }
       })
     }
-    if (!filterBuild){
+    if (hasShip){
       return build;
     }
   }
 
   $scope.costFilter = function(build){
-    if (!($scope.currentBuildIDs.indexOf(build.id) > -1 && build.unique) && ($scope.totalThreat + build.threat <= 8)){
+    if (!($scope.currentListIDs.indexOf(build.id) > -1 && build.unique) && ($scope.totalThreat + build.threat <= 8)){
       return build;
     }
   }
@@ -251,7 +284,7 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
   }
 
   $scope.getThreatColor = function(index){
-    var colors = ["#4CAF50","#FFEB3B","#FF9800","#F44336","#E91E63","#9C27B0"]
+    var colors = ["#71c043","#fff200","#f5811f","#ee1c25","#d70b8b","#994f9f"]
     return colors[index - 1]
   }
 
@@ -288,6 +321,19 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
     }
     return iconMap[faction];
   }
+
+  $scope.getSelectedText = function() {
+    var iconMap = {
+      'rebelalliance':'x',
+      'galacticempire':'F',
+      'scumandvillainy':'f',
+      'resistance':'w',
+      'firstorder':'U',
+      'separatistalliance':'',
+      'galacticrepublic':'',
+    }
+    return iconMap[$scope.selectedFaction.xws];
+  };
 
   $scope.querySearch = function querySearch (query) {
     var results = query ? $scope.allCards.filter(createFilterFor(query)) : []
@@ -329,17 +375,17 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
         .relativeTo(ev.srcElement)
         .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
 
-        console.log(card);
+      console.log(card);
 
-        var template = '';
-        if (card.sides){
-          card.sides.forEach(function(side){
-            template += '<div><img style="max-width: 350px;" src="' + side.image + '" /></div>';
-          })
-        } else {
-          console.log('no sides')
-          template += '<div><img style="max-width: 350px;" src="' + card.image + '" /></div>';
-        }
+      var template = '';
+      if (card.sides){
+        card.sides.forEach(function(side){
+          template += '<div><img style="max-width: 400px;" src="' + side.image + '" /></div>';
+        })
+      } else {
+        console.log('no sides')
+        template += '<div><img style="max-width: 300px;" src="' + card.image + '" /></div>';
+      }
 
     var config = {
       attachTo: angular.element(document.body),
@@ -361,6 +407,82 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
 
   function cardPanelCtrl(mdPanelRef, $timeout) {
     $mdPanelRef = mdPanelRef;
+  }
+
+  $scope.showCard = function showCard($event, card) {
+    var template = '<md-dialog style="background: none;">';
+    if (card.sides){
+      card.sides.forEach(function(side){
+        template += '<div><img style="max-width: 400px;" src="' + side.image + '" /></div>';
+      })
+    } else {
+      template += '<div><img style="max-width: 300px;" src="' + card.image + '" /></div>';
+    }
+    template += '</md-dialog>'
+
+    $mdDialog.show({
+      parent: angular.element(document.body),
+      targetEvent: $event,
+      template: template,
+      locals: {
+        card: card
+      },
+      clickOutsideToClose: true,
+      escapeToClose: true,
+      controller: CardDialogController
+    });
+    function CardDialogController($scope, $mdDialog, card) {
+      $scope.card = card;
+      $scope.closeDialog = function() {
+        $mdDialog.hide();
+      }
+    }
+  }
+
+  $scope.showList = function showList($event){
+    $mdDialog.show({
+      parent: angular.element(document.body),
+      targetEvent: $event,
+      templateUrl: './dialog/list.html',
+      locals: {
+        currentList: $scope.currentList
+      },
+      clickOutsideToClose: true,
+      escapeToClose: true,
+      controller: ListDialogController
+    });
+    function ListDialogController($scope, $mdDialog, currentList) {
+      $scope.currentList = currentList;
+
+      $scope.getArray = function(len) {
+        return new Array(len);
+      }
+
+      $scope.getThreatColor = function(index){
+        var colors = ["#71c043","#fff200","#f5811f","#ee1c25","#d70b8b","#994f9f"]
+        return colors[index - 1]
+      }
+
+      $scope.getIcon = function getIcon(name){
+        var iconMap = {
+          'rebelalliance':'rebel',
+          'galacticempire':'empire',
+          'scumandvillainy':'scum',
+          'separatistalliance':'separatists',
+          'galacticrepublic':'republic',
+          'configuration':'config',
+          'resistance':'rebel'
+        }
+        if (iconMap.hasOwnProperty(name)){
+          return iconMap[name];
+        }
+        return name;
+      }
+
+      $scope.closeDialog = function() {
+        $mdDialog.hide();
+      }
+    }
   }
 
   init();

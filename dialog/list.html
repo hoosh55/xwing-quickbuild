@@ -1,0 +1,55 @@
+<md-dialog aria-label="list" flex-gt-xs="90" flex-gt-sm="80" flex-gt-md="70" flex-gt-lg="60">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h1>My List</h1><span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon aria-label="close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <md-list class="quickbuildList">
+      <md-list-item ng-repeat="build in currentList track by $index" layout="row">
+        <div layout="column" flex="65">
+          <div layout="row" layout-align="start center" ng-repeat="pilot in build.pilots">
+            <div flex="33" class="title">{{pilot.ship}}</div>
+            <div flex="33" class="title"><i class="xwing-miniatures-font xwing-miniatures-font-unique" ng-repeat="l in getArray(pilot.limited) track by $index" style="margin-right: 8px;"></i>{{pilot.name}}</div>
+            <div flex="33" style="padding: 8px 0;">
+              <div ng-repeat="upgrade in pilot.upgrades">
+                <i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(upgrade.type)}}"></i> {{upgrade.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div flex="30" layout="row" layout-align="center center">
+          <div class="threatBlock" ng-style="{'background-color':getThreatColor(build.threat),'border-color':getThreatColor(build.threat)}" ng-class="{inactive: $index >= build.threat}" ng-repeat="t in getArray(6) track by $index"></div>
+        </div>
+        <md-button flex="5" ng-click="removeBuild(build)">X</md-button>
+      </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+    <!--<table>
+      <thead>
+        <tr>
+          <th>Ship</th>
+          <th>Pilot</th>
+          <th>Upgrades</th>
+          <th>Threat</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="build in currentList track by $index">
+          <td><div ng-repeat="pilot in build.pilots">{{pilot.ship}}</div></td>
+          <td><div ng-repeat="pilot in build.pilots"><i class="xwing-miniatures-font xwing-miniatures-font-unique" ng-repeat="l in getArray(pilot.limited) track by $index" style="margin-right: 8px;"></i>{{pilot.name}}</div></td>
+          <td><div ng-repeat="pilot in build.pilots"><div ng-repeat="upgrade in pilot.upgrades"><i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(upgrade.type)}}"></i> {{upgrade.name}}</div></div></td>
+          <td>{{build.threat}}</td>
+          <td><md-button ng-click="removeBuild(build)">X</md-button></td>
+        </tr>
+      </tbody>
+    </table>-->
+  </md-dialog-content>
+  <md-dialog-actions layout="row" layout-align="end center">
+    <md-button ng-click="closeDialog()">Close</md-button>
+  </md-dialog-actions>
+</md-dialog>

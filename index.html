@@ -5,11 +5,40 @@
   <!-- Angular Material style sheet -->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
   <link rel="stylesheet" href="./vendor/xwing-miniatures-font/dist/xwing-miniatures.css">
-  <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <style>
+  @font-face {
+    font-family: "bank-gothic-md-bt";
+    src: url("./fonts/bank-gothic-md-bt.ttf");
+  }
+
+  @font-face {
+    font-family: "eurostile-bold";
+    src: url("./fonts/eurostile-bold.ttf");
+  }
+
+  @font-face {
+    font-family: "eurostile";
+    src: url("./fonts/eurostile.ttf");
+  }
+
+  @font-face {
+    font-family: "kimberley-bl";
+    src: url("./fonts/kimberley-bl.ttf");
+  }
+
+  html {
+    font-family: "eurostile";
+  }
+
+  body {
+    background-image: url("./img/stardust.png");
+    background-repeat: repeat;
+  }
+
   .threatBlock {
-    width: 40px;
+    width: 28px;
     height: 8px;
     margin: 0px 4px 0px;
     border-radius: 4px;
@@ -18,13 +47,14 @@
 
   .threatBlock.inactive {
     background-color: transparent !important;
-    border-color: #9E9E9E !important;
+    border-color: #fff !important;
+    opacity: .25;
   }
 
   .pilotTitle {
     text-align: center;
     margin-bottom: 4px;
-    /*font-family: 'Orbitron', sans-serif;*/
+    font-family: 'bank-gothic-md-bt';
     font-variant: small-caps;
   }
 
@@ -33,14 +63,56 @@
     margin-top: 4px;
   }
 
+  .title {
+    font-family: 'bank-gothic-md-bt';
+    font-variant: small-caps;
+    font-weight: medium;
+  }
+
   .navbar-logo {
     height: 32px;
     margin-right: 16px;
   }
 
+  .shipSelect > .md-select-value {
+    min-width: 40px;
+  }
+
+  .xwingNav .md-select-value * {
+    color: #fff;
+  }
+
+  .shipSelect > .md-select-value>span:not(.md-select-icon) {
+    font-family: XWingShip;
+    font-style: normal;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .shipSelect--option .md-text {
+    font-size: 16px;
+  }
+
+  .shipSelect > .md-select-value .md-select-icon {
+    width: 12px;
+  }
+
   .branded {
-    /*font-family: 'Orbitron', sans-serif;
-    font-variant: small-caps;*/
+    font-family: 'bank-gothic-md-bt';
+    font-variant: small-caps;
+  }
+
+  .pilotCard {
+    background: #232123;
+    color: #fff;
+    border-radius: 16px;
+    box-shadow: none;
+    border: 1px solid #424242;
+  }
+
+  .pilotCard img {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
   }
 
   .xwing-miniatures-ship, .xwing-miniatures-font {
@@ -48,56 +120,61 @@
     font-variant: none !important;
   }
 
-  #bottomNav {
-    position: fixed;
-    bottom: 0;
-    background: #fff;
-    border-top: 1px solid #E0E0E0;
+  #listFAB {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
     z-index: 10;
-    height: 48px;
-    width: 100%;
+    font-family: "kimberley-bl";
+    background-color: #000;
+    color: #f57d31;
   }
 
-  #content {
-    position: fixed;
-    top: 62px;
-    bottom: 48px;
-    padding: 8px;
-    overflow-y: auto;
+  .clickable {
+    cursor: pointer;
   }
 
   .xwingNav {
     background-color: #000 !important;
   }
+
+  .quickbuildList md-list-item:nth-child(odd) {
+    background-color: #DCDDDF
+  }
+
+  .quickbuildList md-list-item {
+    padding: 16px;
+  }
 </style>
 <body ng-app="QuickBuildApp" ng-controller="QuickBuildCtrl" ng-cloak layout="column" layout-align="start stretch">
-  <md-toolbar class="xwingNav">
+  <md-toolbar class="xwingNav" style="overflow: hidden;">
     <div class="md-toolbar-tools">
       <img class="navbar-logo" src="./img/logo.svg" alt="">
 
-      <h2 class="branded">Quick Build</h2>
+      <h2 show-gt-sm class="branded">Quick Build</h2>
 
-      <md-autocomplete style="margin: 0 16px;" flex
-          md-selected-item="searchCard"
-          md-search-text-change="searchTextChange(searchText)"
-          md-search-text="searchText"
-          md-selected-item-change="searchCardChange(item)"
-          md-items="item in querySearch(searchText)"
-          md-item-text="item.name"
-          md-min-length="0"
-          placeholder="Filter..."
-          input-aria-labelledby="Filter Cards">
-        <md-item-template>
-          <span md-highlight-text="searchText" md-highlight-flags="i">{{item.name}}</span>
-        </md-item-template>
-      </md-autocomplete>
+      <div flex style="margin: 0 16px;">
+        <md-autocomplete style="max-width: 400px; margin: 0 auto;"
+            md-selected-item="searchCard"
+            md-search-text-change="searchTextChange(searchText)"
+            md-search-text="searchText"
+            md-selected-item-change="searchCardChange(item)"
+            md-items="item in querySearch(searchText)"
+            md-item-text="item.name"
+            md-min-length="0"
+            placeholder="Filter..."
+            input-aria-labelledby="Filter Cards">
+          <md-item-template>
+            <span md-highlight-text="searchText" md-highlight-flags="i">{{item.name}}</span>
+          </md-item-template>
+        </md-autocomplete>
+      </div>
 
       <md-menu>
         <md-button class="md-icon-button" ng-click="openMenu($mdMenu, $event)">
           <i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(selectedFaction.xws)}}"></i>
         </md-button>
         <md-menu-content width="4">
-          <!-- ng-if="faction.xws !== selectedFaction.xws"-->
           <md-menu-item ng-repeat="faction in data.factions | orderBy:'ffg':false">
             <md-button ng-click="selectFaction(faction)">
               <i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(faction.xws)}}" md-menu-align-target></i>
@@ -107,16 +184,45 @@
         </md-menu-content>
       </md-menu>
 
-      <md-select ng-model="selectedShips" md-selected-text="D" multiple>
-        <md-option ng-repeat="ship in data.ships" ng-value="ship.xws" ng-if="ship.faction === selectedFaction.xws">
+      <md-menu>
+        <md-button class="md-icon-button" ng-click="openMenu($mdMenu, $event)">
+          <i class="xwing-miniatures-font xwing-miniatures-font-config"></i>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button ng-click="quickBuildOrderChange('id',false)">Default</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="quickBuildOrderChange('threat',true)">Threat (Des)</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="quickBuildOrderChange('threat',false)">Threat (Asc)</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="quickBuildOrderChange('name',true)">Pilot Name (Des)</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="quickBuildOrderChange('name',false)">Pilot Name (Asc)</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="quickBuildOrderChange('ship',true)">Ship (Des)</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="quickBuildOrderChange('ship',false)">Ship (Asc)</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
+      <md-select class="shipSelect" ng-model="selectedShips" md-selected-text="getSelectedText()" multiple>
+        <md-option class="shipSelect--option" ng-repeat="ship in data.ships" ng-value="ship.xws" ng-if="ship.faction === selectedFaction.xws">
           <i class="xwing-miniatures-ship xwing-miniatures-ship-{{getIcon(ship.xws)}}" md-menu-align-target></i>
           {{ship.name}}
         </md-option>
       </md-select>
 
-      <md-button class="md-icon-button" aria-label="">
-        <i class="xwing-miniatures-ship xwing-miniatures-ship-{{getSigShip(selectedFaction.xws)}}"></i>
-      </md-button>
+      <!--<md-button class="md-icon-button" aria-label="">
+        <i class="xwing-miniatures-font xwing-miniatures-font-config"></i>
+      </md-button>-->
 
       <!--<md-button class="md-icon-button" ng-click="">
         <i class="material-icons">search</i>
@@ -124,39 +230,34 @@
     </div>
   </md-toolbar>
 
-  <!--<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-    <md-list>
-      <md-subheader class="md-no-sticky">{{selectedFaction.name}}</md-subheader>
-      <md-list-item ng-repeat="ship in data.ships" ng-if="ship.faction === selectedFaction.xws" ng-click="toggleShip(ship.xws)">
-        <p>{{ship.name}}</p>
-        <md-checkbox class="md-secondary" ng-checked="selectedShips.indexOf(ship.xws) > -1"></md-checkbox>
-      </md-list-item>
-    </md-list>
-  </md-sidenav>-->
-  <div layout="row" layout-wrap flex style="overflow-y: auto;">
-    <md-card class="pilotCard" ng-repeat="build in data.quickBuilds | orderBy:'threat':true | filter:selectedFilter | filter:costFilter | filter:searchFilter" ng-class="{'active':!((currentBuildIDs.indexOf(build.id) > -1 && build.unique) || (totalThreat + build.threat > 8))}" flex-gt-sm="33" flex-gt-xs="50" flex="100">
-      <img ng-src="{{build.pilots[0].artwork}}" class="md-card-image" alt="{{build.pilots[0].name}}">
-      <div layout="column" style="padding: 24px 16px 16px;">
-        <div class="md-headline pilotTitle" layout="row" layout-align="center center" ng-click="showMenu($event, build.pilots[0])"><span ng-repeat="l in getArray(build.pilots[0].limited) track by $index" style="margin-right: 8px;"><i class="xwing-miniatures-font xwing-miniatures-font-unique"></i></span>{{build.pilots[0].name}}</div>
-        <div class="md-subhead pilotTitle">{{build.pilots[0].ship.name}}</div>
-        <div style="margin: 8px;" layout="row" layout-align="center center">
-          <div class="threatBlock" ng-style="{'background-color':getThreatColor(build.threat),'border-color':getThreatColor(build.threat)}" ng-class="{inactive: $index >= build.threat}" ng-repeat="t in getArray(6) track by $index"></div>
+  <div layout="row" layout-wrap flex style="overflow-y: auto;"><!--| filter:costFilter-->
+    <div ng-repeat="build in data.quickBuilds | orderBy:quickBuildOrder.expression:quickBuildOrder.reverse | filter:selectedFilter | filter:searchFilter" flex-gt-md="25" flex-gt-sm="33" flex-gt-xs="50" flex="100">
+      <md-card class="pilotCard" ng-class="{'active':!((currentListIDs.indexOf(build.id) > -1 && build.unique) || (totalThreat + build.threat > 8))}">
+        <!--<img ng-src="{{build.pilots[0].artwork}}" class="md-card-image" alt="{{build.pilots[0].name}}">-->
+        <div layout="column" style="padding: 24px 16px 16px;">
+          <div class="md-headline pilotTitle clickable" layout="row" layout-align="center center" ng-click="showCard($event, build.pilots[0])"><i class="xwing-miniatures-font xwing-miniatures-font-unique" ng-repeat="l in getArray(build.pilots[0].limited) track by $index" style="margin-right: 8px;"></i>{{build.pilots[0].name}}</div>
+          <div class="md-subhead pilotTitle">{{build.pilots[0].ship.name}}</div>
+          <div style="margin: 8px;" layout="row" layout-align="center center">
+            <div class="threatBlock" ng-style="{'background-color':getThreatColor(build.threat),'border-color':getThreatColor(build.threat)}" ng-class="{inactive: $index >= build.threat}" ng-repeat="t in getArray(6) track by $index"></div>
+          </div>
         </div>
-      </div>
-      <md-card-content ng-repeat="pilot in build.pilots track by $index" flex>
-        <div class="md-headline pilotTitle" ng-if="$index !== 0"><span ng-repeat="l in getArray(pilot.limited) track by $index" style="margin-right: 8px;"><i class="xwing-miniatures-font xwing-miniatures-font-unique"></i></span>{{pilot.name}}</div>
-        <div class="md-subhead pilotTitle" ng-if="$index !== 0">{{pilot.ship.name}}</div>
-        <div layout="row" layout-wrap>
-          <md-truncate class="pilotUpgrade" ng-click="showMenu($event, upgrade)" ng-repeat="upgrade in pilot.upgrades track by $index" flex="50"><i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(upgrade.type)}}"></i> {{upgrade.name}}</md-truncate>
-        </div>
-      </md-card-content>
-      <md-card-actions layout="row" layout-align="center center">
-        <md-button ng-click="addBuild(build)" ng-disabled="(currentBuildIDs.indexOf(build.id) > -1 && build.unique) || (totalThreat + build.threat > 8)">Add</md-button>
-      </md-card-actions>
-    </md-card>
+        <md-card-content ng-repeat="pilot in build.pilots track by $index" flex>
+          <div class="md-headline pilotTitle clickable" ng-if="$index !== 0" ng-click="showCard($event, pilot)"><i class="xwing-miniatures-font xwing-miniatures-font-unique" ng-repeat="l in getArray(pilot.limited) track by $index" style="margin-right: 8px;"></i>{{pilot.name}}</div>
+          <div class="md-subhead pilotTitle" ng-if="$index !== 0">{{pilot.ship.name}}</div>
+          <div layout="row" layout-wrap>
+            <md-truncate class="pilotUpgrade clickable" ng-click="showCard($event, upgrade)" ng-repeat="upgrade in pilot.upgrades track by $index" flex="50"><i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(upgrade.type)}}"></i> {{upgrade.name}}</md-truncate>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="center center">
+          <md-button ng-click="addBuild(build)" ng-hide="(currentListIDs.indexOf(build.id) > -1 && build.unique)" ng-disabled="(totalThreat + build.threat > 8)">Add</md-button>
+          <md-button ng-click="removeBuild(build)" ng-show="currentListIDs.indexOf(build.id) > -1" ng-click="removeBuild(build)">Remove</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
   </div>
 
-  <md-button class="md-fab" aria-label="Eat cake">
+
+  <md-button id="listFAB" class="md-fab" aria-label="View List" ng-click="showList();">
       {{totalThreat}} / 8
   </md-button>
 
