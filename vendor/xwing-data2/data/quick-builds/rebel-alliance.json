@@ -100,19 +100,6 @@
       "threat": 2,
       "pilots": [
         {
-          "id": "thanekyrell",
-          "upgrades": {
-            "talent": ["outmaneuver"],
-            "modification": ["stealthdevice"],
-            "configuration": ["servomotorsfoils"]
-          }
-        }
-      ]
-    },
-    {
-      "threat": 2,
-      "pilots": [
-        {
           "id": "garvendreis-t65xwing",
           "upgrades": {
             "configuration": ["servomotorsfoils"]
@@ -241,33 +228,22 @@
       "threat": 2,
       "pilots": [
         {
-          "id": "bladesquadronveteran",
-          "upgrades": {
-            "talent": ["elusive"],
-            "cannon": ["tractorbeam"]
-          }
-        }
-      ]
-    },
-    {
-      "threat": 2,
-      "pilots": [
-        {
-          "id": "bluesquadronpilot",
-          "upgrades": {
-            "sensor": ["advancedsensors"]
-          }
-        }
-      ]
-    },
-    {
-      "threat": 2,
-      "pilots": [
-        {
           "id": "braylenstramm",
           "upgrades": {
             "talent": ["trickshot"],
             "cannon": ["jammingbeam"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
+          "id": "bladesquadronveteran",
+          "upgrades": {
+            "talent": ["elusive"],
+            "cannon": ["tractorbeam"]
           }
         }
       ]
@@ -282,6 +258,17 @@
             "sensor": ["advancedsensors"],
             "cannon": ["heavylasercannon"],
             "modification": ["shieldupgrade"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
+          "id": "bluesquadronpilot",
+          "upgrades": {
+            "sensor": ["advancedsensors"]
           }
         }
       ]
@@ -586,14 +573,6 @@
       ]
     },
     {
-      "threat": 1,
-      "pilots": [
-        {
-          "id": "zeborrelios-tielnfighter"
-        }
-      ]
-    },
-    {
       "threat": 2,
       "pilots": [
         {
@@ -603,6 +582,14 @@
             "crew": ["zeborrelios"],
             "modification": ["hullupgrade"]
           }
+        }
+      ]
+    },
+    {
+      "threat": 1,
+      "pilots": [
+        {
+          "id": "zeborrelios-tielnfighter"
         }
       ]
     },
@@ -717,18 +704,7 @@
         }
       ]
     },
-    {
-      "threat": 1,
-      "pilots": [
         {
-          "id": "talasquadronpilot",
-          "upgrades": {
-            "talent": ["selfless"]
-          }
-        }
-      ]
-    },
-    {
       "threat": 2,
       "pilots": [
         {
@@ -758,6 +734,17 @@
             "missile": ["protonrockets"],
             "talent": ["outmaneuver"],
             "modification": ["shieldupgrade"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 1,
+      "pilots": [
+        {
+          "id": "talasquadronpilot",
+          "upgrades": {
+            "talent": ["selfless"]
           }
         }
       ]

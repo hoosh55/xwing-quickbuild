@@ -48,18 +48,6 @@
       "threat": 2,
       "pilots": [
         {
-          "id": "idenversio",
-          "upgrades": {
-            "talent": ["lonewolf"],
-            "torpedo": ["protontorpedoes"]
-          }
-        }
-      ]
-    },
-    {
-      "threat": 2,
-      "pilots": [
-        {
           "id": "nightbeast",
           "upgrades": {
             "talent": ["predator"],
@@ -482,17 +470,6 @@
       ]
     },
     {
-      "threat": 2,
-      "pilots": [
-        {
-          "id": "puresabacc",
-          "upgrades": {
-            "modification": ["stealthdevice"]
-          }
-        }
-      ]
-    },
-    {
       "threat": 3,
       "pilots": [
         {
@@ -505,6 +482,17 @@
           "id": "planetarysentinel",
           "upgrades": {
             "device": ["connernets"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
+          "id": "puresabacc",
+          "upgrades": {
+            "modification": ["stealthdevice"]
           }
         }
       ]
