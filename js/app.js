@@ -61,12 +61,11 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
         });
       }
       //load quickbuilds
-      var quickBuilds = [];
       for (var quickbuildPath of manifest["quick-builds"]){
         loadJSON(vendorDir, quickbuildPath).then(function(res){
           for (var build of res.data['quick-builds']) {
             build.faction = xwsParse(fileNameParse(res.fileName));
-            quickBuilds.push(build);
+            $scope.data.quickBuilds.push(build);
           }
         }, function(reason) {
           alert('Failed: ' + reason);
@@ -84,7 +83,7 @@ angular.module('QuickBuildApp', ['ngMaterial', 'ngMessages'])
                 upgradeArray.push(upgradeCard)
               })
             }
-            var pilotCard = $scope.getPilot(pilot.id);
+            var pilotCard = angular.copy($scope.getPilot(pilot.id));
             var shipCard = pilotCard.ship;
             if (pilotCard.limited > 0){
               build.unique = true;
