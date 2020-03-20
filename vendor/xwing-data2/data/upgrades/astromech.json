@@ -10,7 +10,8 @@
         "ability": "Action: Spend 1 non-recurring [Charge] from another equipped upgrade to recover 1 shield. Action: Spend 2 shields to recover 1 non-recurring [Charge] on an equipped upgrade.",
         "slots": ["Astromech"],
         "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Upgrade_99.png",
-        "ffg": 323
+        "ffg": 323,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/Card_art_XW_U_99.jpg"
       }
     ],
     "cost": { "value": 2 },
@@ -52,7 +53,10 @@
         "ffg": 282
       }
     ],
-    "cost": { "value": 4 },
+    "cost": {
+      "variable": "agility",
+      "values": { "0": 3, "1": 5, "2": 7, "3": 9 }
+    },
     "hyperspace": true
   },
   {
@@ -71,7 +75,10 @@
         "ffg": 324
       }
     ],
-    "cost": { "value": 6 },
+    "cost": {
+      "variable": "agility",
+      "values": { "0": 4, "1": 6, "2": 8, "3": 10 }
+    },
     "restrictions": [{ "factions": ["Rebel Alliance"] }],
     "hyperspace": true
   },
@@ -159,7 +166,7 @@
       {
         "title": "R5-P8",
         "type": "Astromech",
-        "ability": "While you perform an attack against a defender in your [Front Arc], you may spend 1 [Charge] to reroll 1 attack die. If the rerolled result is a [Critical Hit], suffer 1 [Critical Hit] damage.",
+        "ability": "While you perform an attack against a defender in your [Front Arc], you may spend 1 [Charge] to reroll 1 attack die. If the rerolled result is a [Critical Hit] result, suffer 1 [Critical Hit] damage.",
         "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Upgrade_144.png",
         "slots": ["Astromech"],
         "charges": { "value": 3, "recovers": 0 },
@@ -169,7 +176,7 @@
     ],
     "cost": { "value": 4 },
     "restrictions": [{ "factions": ["Scum and Villainy"] }],
-    "hyperspace": false
+    "hyperspace": true
   },
   {
     "name": "R5-TK",
@@ -186,7 +193,7 @@
         "ffg": 370
       }
     ],
-    "cost": { "value": 1 },
+    "cost": { "value": 0 },
     "restrictions": [{ "factions": ["Scum and Villainy"] }],
     "hyperspace": false
   },
@@ -273,7 +280,7 @@
       "values": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6 }
     },
     "restrictions": [{ "factions": ["Resistance"] }],
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "M9-G8",
@@ -292,6 +299,149 @@
     ],
     "cost": { "value": 7 },
     "restrictions": [{ "factions": ["Resistance"] }],
-    "hyperspace": true
+    "hyperspace": false
+  },
+  {
+    "name": "R2-C4",
+    "limited": 1,
+    "xws": "r2c4",
+    "sides": [
+      {
+        "title": "R2-C4",
+        "type": "Astromech",
+        "ability": "While you perform an attack, you may spend 1 evade token to change 1 [Focus] result to a [Hit] result.",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/8fce75228aa2c4eaaf3e9666c4da8caf.png",
+        "slots": ["Astromech"],
+        "ffg": 589,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/db2012557dc9b2953aeeb8c3f98d5052.jpg"
+      }
+    ],
+    "cost": { "value": 5 },
+    "restrictions": [{ "factions": ["Galactic Republic"] }],
+    "hyperspace": false
+  },
+  {
+    "name": "R4-P Astromech",
+    "xws": "r4pastromech",
+    "limited": 0,
+    "sides": [
+      {
+        "title": "R4-P Astromech",
+        "type": "Astromech",
+        "ability": "Before you execute a basic maneuver, you may spend 1 [Charge]. If you do, while you execute that maneuver, reduce its difficulty.",
+        "slots": ["Astromech"],
+        "charges": { "value": 2, "recovers": 0 },
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/26f6dd68ba6bb37fa5315f45a6237c88.png",
+        "ffg": 546,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/081dbeb7591c8dfd1f752729b27bdf2a.jpg"
+      }
+    ],
+    "restrictions": [{ "factions": ["Galactic Republic"] }],
+    "hyperspace": true,
+    "cost": { "value": 4 }
+  },
+  {
+    "name": "R4-P17",
+    "xws": "r4p17",
+    "limited": 1,
+    "sides": [
+      {
+        "title": "R4-P17",
+        "type": "Astromech",
+        "ability": "After you fully execute a red maneuver, you may spend 1 [Charge] to perform an action, even while stressed.",
+        "slots": ["Astromech"],
+        "charges": { "value": 2, "recovers": 0 },
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/80c71951bb28b45b9ffdc84c9e7e69f8.png",
+        "ffg": 547,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/7b3b50078bef620079c43a1689bb005a.jpg"
+      }
+    ],
+    "restrictions": [{ "factions": ["Galactic Republic"] }],
+    "hyperspace": true,
+    "cost": { "value": 5 }
+  },
+  {
+    "name": "R4-P44",
+    "xws": "r4p44",
+    "limited": 1,
+    "sides": [
+      {
+        "title": "R4-P44",
+        "type": "Astromech",
+        "ability": "After you fully execute a red maneuver, if there is an enemy ship in your [Bullseye Arc], gain 1 calculate token.",
+        "slots": ["Astromech"],
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/749fa54f44bc3327349aa3f8b1742a67.png",
+        "ffg": 551,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/313d08463a9c2e7c5d9377a39277ef03.jpg"
+      }
+    ],
+    "restrictions": [{ "factions": ["Galactic Republic"] }],
+    "hyperspace": false,
+    "cost": { "value": 5 }
+  },
+  {
+    "name": "R2-A6",
+    "limited": 1,
+    "xws": "r2a6",
+    "hyperspace": false,
+    "sides": [
+      {
+        "ability": "After you reveal your dial, you may set your dial to a maneuver of the same bearing of a speed 1 higher or lower.",
+        "title": "R2-A6",
+        "type": "Astromech",
+        "slots": ["Astromech"],
+        "ffg": 588,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/fe5da38a69cf0f5212d5cb06ea9053de.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/1d90c6b2f87d17c061e07a92373310b4.png"
+      }
+    ],
+    "restrictions": [{ "factions": ["Galactic Republic"] }],
+    "cost": { "value": 6 }
+  },
+  {
+    "name": "C1-10P",
+    "sides": [
+      {
+        "ffg": 618,
+        "title": "C1-10P",
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/c480434cf330e99e269eaf0fe83e2444.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/cde74a191d82775eacf2e273e855ef5f.png",
+        "ability": "Setup: Equip this side faceup. After you execute a maneuver, you may spend 1 [Charge] to perform a red [Evade] action, even while stressed. During the End Phase, if this card has 0 active [Charge], flip it.",
+        "slots": ["Astromech"],
+        "charges": { "value": 2, "recovers": 0 },
+        "type": "Astromech"
+      },
+      {
+        "ffg": 617,
+        "title": "C1-10P (Erratic)",
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/815bfa9be6941de313eb1e318a02b2ae.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/6150404202e627187f39b6092cdf702c.png",
+        "ability": "After you execute a maneuver, you must choose a ship at range 0-1. It gains 1 jam token.",
+        "slots": ["Astromech"],
+        "type": "Astromech"
+      }
+    ],
+    "cost": { "value": 7 },
+    "limited": 1,
+    "hyperspace": false,
+    "xws": "c110p"
+  },
+  {
+    "name": "R1-J5",
+    "limited": 1,
+    "xws": "r1j5",
+    "hyperspace": true,
+    "sides": [
+      {
+        "ability": "While you have 2 or fewer stress tokens, you can perform actions on damage cards even while stressed. After you repair a damage card with the Ship trait, you may spend 1 [Charge] to repair that card again.",
+        "title": "R1-J5",
+        "type": "Astromech",
+        "slots": ["Astromech"],
+        "ffg": 644,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/2f64dab83e6e4c52702d5906a18dbae6.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/07ef542a7250abbf79d27526f17ac879.png"
+      }
+    ],
+    "cost": { "value": 6 }
   }
 ]

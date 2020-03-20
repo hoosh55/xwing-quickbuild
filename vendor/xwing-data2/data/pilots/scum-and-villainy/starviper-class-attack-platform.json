@@ -21,6 +21,9 @@
     "3PR",
     "4FW"
   ],
+  "dialCodes": [
+    "SV"
+  ],
   "faction": "Scum and Villainy",
   "stats": [
     { "arc": "Front Arc", "type": "attack", "value": 3 },
@@ -65,7 +68,7 @@
       "name": "Black Sun Enforcer",
       "initiative": 2,
       "limited": 0,
-      "cost": 46,
+      "cost": 45,
       "xws": "blacksunenforcer",
       "text": "Prince Xizor himself collaborated with MandalMotors to design the StarViper-class attack platform, one of the most formidable starfighters in the galaxy.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_182.png",
@@ -85,7 +88,7 @@
       "limited": 1,
       "cost": 54,
       "xws": "dalanoberos-starviperclassattackplatform",
-      "ability": "After you fully execute a maneuver, you may gain 1 stress token to rotate your ship 90˚.",
+      "ability": "After you fully execute a maneuver, you may gain 1 stress token to rotate your ship 90°.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_179.png",
       "shipAbility": {
         "name": "Microthrusters",
@@ -101,7 +104,7 @@
       "caption": "Prince Xizor's Bodyguard",
       "initiative": 5,
       "limited": 1,
-      "cost": 63,
+      "cost": 64,
       "xws": "guri",
       "ability": "At the start of the Engagement Phase, if there is at least 1 enemy ship at range 0-1, you may gain 1 focus token.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_178.png",

@@ -22,6 +22,9 @@
     "5FB",
     "5KR"
   ],
+  "dialCodes": [
+    "AW"
+  ],
   "faction": "Rebel Alliance",
   "stats": [
     { "arc": "Front Arc", "type": "attack", "value": 2 },
@@ -54,7 +57,7 @@
       "slots": ["Talent", "Talent", "Missile"],
       "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/Card_art_XW_P_20.jpg",
       "ffg": 20,
-      "hyperspace": false
+      "hyperspace": true
     },
     {
       "name": "Green Squadron Pilot",
@@ -71,7 +74,7 @@
       "slots": ["Talent", "Talent", "Missile"],
       "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/Card_art_XW_P_21.jpg",
       "ffg": 21,
-      "hyperspace": false
+      "hyperspace": true
     },
     {
       "name": "Jake Farrell",
@@ -89,13 +92,13 @@
       "slots": ["Talent", "Talent", "Missile"],
       "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/Card_art_XW_P_19.jpg",
       "ffg": 19,
-      "hyperspace": false
+      "hyperspace": true
     },
     {
       "name": "Phoenix Squadron Pilot",
       "initiative": 1,
       "limited": 0,
-      "cost": 30,
+      "cost": 29,
       "xws": "phoenixsquadronpilot",
       "text": "Led by Commander Jun Sato, the brave but inexperienced pilots of Phoenix Squadron face staggering odds in their battle against the Galactic Empire.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_22.png",
@@ -106,7 +109,7 @@
       "slots": ["Talent", "Missile"],
       "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/Card_art_XW_P_22.jpg",
       "ffg": 22,
-      "hyperspace": false
+      "hyperspace": true
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Scurrg H-6 Bomber",
+  "name": "Scurrg H-6 bomber",
   "xws": "scurrgh6bomber",
   "ffg": 4,
   "size": "Medium",
@@ -20,6 +20,9 @@
     "3YR",
     "3RR",
     "4FR"
+  ],
+  "dialCodes": [
+    "SRG"
   ],
   "faction": "Scum and Villainy",
   "stats": [
@@ -63,7 +66,7 @@
       "name": "Lok Revenant",
       "initiative": 2,
       "limited": 0,
-      "cost": 43,
+      "cost": 45,
       "xws": "lokrevenant",
       "text": "The Nubian Design Collective crafted the Scurrg H-6 Bomber with combat versatility in mind, arming it with powerful shields and a bristling array of destructive weaponry.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_206.png",

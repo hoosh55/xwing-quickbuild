@@ -100,6 +100,19 @@
       "threat": 2,
       "pilots": [
         {
+          "id": "thanekyrell",
+          "upgrades": {
+            "talent": ["outmaneuver"],
+            "modification": ["stealthdevice"],
+            "configuration": ["servomotorsfoils"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
           "id": "garvendreis-t65xwing",
           "upgrades": {
             "configuration": ["servomotorsfoils"]
@@ -191,7 +204,7 @@
         {
           "id": "esegetuketu",
           "upgrades": {
-            "system": ["trajectorysimulator"],
+            "sensor": ["trajectorysimulator"],
             "missile": ["ionmissiles"],
             "device": ["protonbombs", "connernets"],
             "modification": ["advancedslam"],
@@ -228,10 +241,10 @@
       "threat": 2,
       "pilots": [
         {
-          "id": "braylenstramm",
+          "id": "bladesquadronveteran",
           "upgrades": {
-            "talent": ["trickshot"],
-            "cannon": ["jammingbeam"]
+            "talent": ["elusive"],
+            "cannon": ["tractorbeam"]
           }
         }
       ]
@@ -240,10 +253,21 @@
       "threat": 2,
       "pilots": [
         {
-          "id": "bladesquadronveteran",
+          "id": "bluesquadronpilot",
           "upgrades": {
-            "talent": ["elusive"],
-            "cannon": ["tractorbeam"]
+            "sensor": ["advancedsensors"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
+          "id": "braylenstramm",
+          "upgrades": {
+            "talent": ["trickshot"],
+            "cannon": ["jammingbeam"]
           }
         }
       ]
@@ -258,17 +282,6 @@
             "sensor": ["advancedsensors"],
             "cannon": ["heavylasercannon"],
             "modification": ["shieldupgrade"]
-          }
-        }
-      ]
-    },
-    {
-      "threat": 2,
-      "pilots": [
-        {
-          "id": "bluesquadronpilot",
-          "upgrades": {
-            "sensor": ["advancedsensors"]
           }
         }
       ]
@@ -367,7 +380,7 @@
           "upgrades": {
             "talent": ["outmaneuver"],
             "torpedo": ["protontorpedoes"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "modification": ["afterburners"],
             "astromech": ["r2astromech"]
           }
@@ -382,7 +395,7 @@
           "upgrades": {
             "talent": ["predator"],
             "torpedo": ["protontorpedoes"],
-            "system": ["collisiondetector"],
+            "sensor": ["collisiondetector"],
             "astromech": ["r3astromech"]
           }
         }
@@ -396,7 +409,7 @@
           "upgrades": {
             "talent": ["crackshot"],
             "torpedo": ["iontorpedoes"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "astromech": ["r4astromech"]
           }
         }
@@ -573,6 +586,14 @@
       ]
     },
     {
+      "threat": 1,
+      "pilots": [
+        {
+          "id": "zeborrelios-tielnfighter"
+        }
+      ]
+    },
+    {
       "threat": 2,
       "pilots": [
         {
@@ -586,20 +607,12 @@
       ]
     },
     {
-      "threat": 1,
-      "pilots": [
-        {
-          "id": "zeborrelios-tielnfighter"
-        }
-      ]
-    },
-    {
       "threat": 3,
       "pilots": [
         {
           "id": "cassianandor",
           "upgrades": {
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "crew": ["jynerso", "bazemalbus"],
             "configuration": ["pivotwing"]
           }
@@ -624,7 +637,7 @@
         {
           "id": "hefftobber",
           "upgrades": {
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "crew": ["perceptivecopilot"],
             "gunner": ["bistan"],
             "turret": ["ioncannonturret"],
@@ -639,7 +652,7 @@
         {
           "id": "bluesquadronscout",
           "upgrades": {
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "crew": ["tacticalofficer"],
             "configuration": ["pivotwing"]
           }
@@ -704,7 +717,18 @@
         }
       ]
     },
+    {
+      "threat": 1,
+      "pilots": [
         {
+          "id": "talasquadronpilot",
+          "upgrades": {
+            "talent": ["selfless"]
+          }
+        }
+      ]
+    },
+    {
       "threat": 2,
       "pilots": [
         {
@@ -734,17 +758,6 @@
             "missile": ["protonrockets"],
             "talent": ["outmaneuver"],
             "modification": ["shieldupgrade"]
-          }
-        }
-      ]
-    },
-    {
-      "threat": 1,
-      "pilots": [
-        {
-          "id": "talasquadronpilot",
-          "upgrades": {
-            "talent": ["selfless"]
           }
         }
       ]
@@ -781,7 +794,7 @@
         {
           "id": "dashrendar",
           "upgrades": {
-            "talent": ["experthandling","trickshot"],
+            "talent": ["experthandling", "trickshot"],
             "illicit": ["riggedcargochute"],
             "crew": ["perceptivecopilot"],
             "title": ["outrider"]
@@ -821,7 +834,7 @@
           "id": "magvayarro",
           "upgrades": {
             "talent": ["elusive"],
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "crew": ["sawgerrera"],
             "modification": ["shieldupgrade"],
             "configuration": ["pivotwing"]
@@ -847,7 +860,7 @@
         {
           "id": "benthictwotubes",
           "upgrades": {
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "configuration": ["pivotwing"]
           }
         }
@@ -859,7 +872,7 @@
         {
           "id": "partisanrenegade",
           "upgrades": {
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "illicit": ["deadmansswitch"],
             "configuration": ["pivotwing"]
           }
@@ -929,7 +942,7 @@
         {
           "id": "kananjarrus",
           "upgrades": {
-            "crew": ["chopper-crew","herasyndulla"],
+            "crew": ["chopper-crew", "herasyndulla"],
             "gunner": ["ezrabridger"],
             "turret": ["ioncannonturret"],
             "title": ["ghost"]

@@ -20,6 +20,9 @@
     "4FR",
     "4KR"
   ],
+  "dialCodes": [
+    "YW"
+  ],
   "faction": "Scum and Villainy",
   "stats": [
     { "arc": "Front Arc", "type": "attack", "value": 2 },
@@ -39,7 +42,7 @@
       "name": "Crymorah Goon",
       "initiative": 1,
       "limited": 0,
-      "cost": 31,
+      "cost": 30,
       "xws": "crymorahgoon",
       "text": "Though far from nimble, the Y-wing's heavy hull, substantial shielding, and turret-mounted cannons make it an excellent patrol craft.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_168.png",
@@ -61,7 +64,7 @@
       "caption": "Pirate Lord",
       "initiative": 4,
       "limited": 1,
-      "cost": 42,
+      "cost": 49,
       "xws": "drearenthal",
       "ability": "While a friendly non-limited ship performs an attack, if the defender is in your firing arc, the attacker may reroll 1 attack die.",
       "slots": [
@@ -83,7 +86,7 @@
       "name": "Hired Gun",
       "initiative": 2,
       "limited": 0,
-      "cost": 33,
+      "cost": 32,
       "xws": "hiredgun",
       "text": "Just the mention of Imperial credits can bring a host of less-than-trustworthy individuals to your side.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_167.png",

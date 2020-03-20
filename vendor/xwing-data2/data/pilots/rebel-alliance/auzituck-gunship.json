@@ -20,6 +20,9 @@
     "3YW",
     "4FW"
   ],
+  "dialCodes": [
+    "Auz"
+  ],
   "faction": "Rebel Alliance",
   "stats": [
     { "arc": "Full Front Arc", "type": "attack", "value": 3 },
@@ -38,7 +41,7 @@
       "name": "Kashyyyk Defender",
       "initiative": 1,
       "limited": 0,
-      "cost": 46,
+      "cost": 44,
       "xws": "kashyyykdefender",
       "text": "Equipped with three wide-range Sureggi twin laser cannons, the Auzituck gunship acts as a powerful deterrent to slaver operations in the Kashyyyk system.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_33.png",

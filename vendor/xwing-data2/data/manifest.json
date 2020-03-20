@@ -1,5 +1,5 @@
 {
-  "version": "1.8.1",
+  "version": "1.20.2",
   "damagedecks": ["data/damage-decks/core.json"],
   "factions": ["data/factions/factions.json"],
   "stats": ["data/stats/stats.json"],
@@ -58,7 +58,7 @@
         "data/pilots/galactic-empire/lambda-class-t-4a-shuttle.json",
         "data/pilots/galactic-empire/tie-advanced-v1.json",
         "data/pilots/galactic-empire/tie-advanced-x1.json",
-        "data/pilots/galactic-empire/tie-interceptor.json",
+        "data/pilots/galactic-empire/tie-in-interceptor.json",
         "data/pilots/galactic-empire/tie-reaper.json",
         "data/pilots/galactic-empire/tie-d-defender.json",
         "data/pilots/galactic-empire/tie-ag-aggressor.json",
@@ -76,12 +76,16 @@
         "data/pilots/resistance/mg-100-starfortress-sf-17.json",
         "data/pilots/resistance/scavenged-yt-1300.json",
         "data/pilots/resistance/rz-2-a-wing.json",
-        "data/pilots/resistance/t-70-x-wing.json"
+        "data/pilots/resistance/t-70-x-wing.json",
+        "data/pilots/resistance/resistance-transport.json",
+        "data/pilots/resistance/resistance-transport-pod.json",
+        "data/pilots/resistance/fireball.json"
       ]
     },
     {
       "faction": "firstorder",
       "ships": [
+        "data/pilots/first-order/tie-ba-interceptor.json",
         "data/pilots/first-order/tie-fo-fighter.json",
         "data/pilots/first-order/tie-sf-fighter.json",
         "data/pilots/first-order/tie-vn-silencer.json",
@@ -93,7 +97,9 @@
       "ships": [
         "data/pilots/separatist-alliance/vulture-class-droid-fighter.json",
         "data/pilots/separatist-alliance/belbullab-22-starfighter.json",
-        "data/pilots/separatist-alliance/sith-infiltrator.json"
+        "data/pilots/separatist-alliance/sith-infiltrator.json",
+        "data/pilots/separatist-alliance/hyena-class-droid-bomber.json",
+        "data/pilots/separatist-alliance/nantex-class-starfighter.json"
       ]
     },
     {
@@ -101,24 +107,30 @@
       "ships": [
         "data/pilots/galactic-republic/arc-170-starfighter.json",
         "data/pilots/galactic-republic/delta-7-aethersprite.json",
-        "data/pilots/galactic-republic/v-19-torrent-starfighter.json"
+        "data/pilots/galactic-republic/v-19-torrent-starfighter.json",
+        "data/pilots/galactic-republic/naboo-royal-n-1-starfighter.json",
+        "data/pilots/galactic-republic/btl-b-y-wing.json"
       ]
     }
   ],
   "upgrades": [
     "data/upgrades/astromech.json",
     "data/upgrades/cannon.json",
+    "data/upgrades/cargo.json",
+    "data/upgrades/command.json",
     "data/upgrades/configuration.json",
     "data/upgrades/crew.json",
     "data/upgrades/device.json",
     "data/upgrades/force-power.json",
     "data/upgrades/gunner.json",
+    "data/upgrades/hardpoint.json",
     "data/upgrades/illicit.json",
     "data/upgrades/missile.json",
     "data/upgrades/modification.json",
     "data/upgrades/sensor.json",
     "data/upgrades/tactical-relay.json",
     "data/upgrades/talent.json",
+    "data/upgrades/team.json",
     "data/upgrades/tech.json",
     "data/upgrades/title.json",
     "data/upgrades/torpedo.json",
@@ -126,10 +138,12 @@
   ],
   "conditions": "data/conditions/conditions.json",
   "quick-builds": [
-    "data/quick-builds/rebel-alliance.json",
-    "data/quick-builds/scum-and-villainy.json",
-    "data/quick-builds/galactic-empire.json",
     "data/quick-builds/first-order.json",
-    "data/quick-builds/resistance.json"
+    "data/quick-builds/galactic-empire.json",
+    "data/quick-builds/galactic-republic.json",
+    "data/quick-builds/rebel-alliance.json",
+    "data/quick-builds/resistance.json",
+    "data/quick-builds/scum-and-villainy.json",
+    "data/quick-builds/separatist-alliance.json"
   ]
 }

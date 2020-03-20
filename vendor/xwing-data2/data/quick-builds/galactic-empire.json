@@ -48,6 +48,18 @@
       "threat": 2,
       "pilots": [
         {
+          "id": "idenversio",
+          "upgrades": {
+            "talent": ["lonewolf"],
+            "torpedo": ["protontorpedoes"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
           "id": "nightbeast",
           "upgrades": {
             "talent": ["predator"],
@@ -205,7 +217,7 @@
           "upgrades": {
             "force-power": ["supernaturalreflexes"],
             "missile": ["clustermissiles"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "modification": ["afterburners", "shieldupgrade"]
           }
         }
@@ -219,7 +231,7 @@
           "upgrades": {
             "talent": ["ruthless"],
             "missile": ["clustermissiles"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "modification": ["shieldupgrade"]
           }
         }
@@ -231,7 +243,7 @@
         {
           "id": "stormsquadronace",
           "upgrades": {
-            "system": ["firecontrolsystem"]
+            "sensor": ["firecontrolsystem"]
           }
         }
       ]
@@ -244,7 +256,7 @@
           "upgrades": {
             "talent": ["outmaneuver"],
             "missile": ["clustermissiles"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "modification": ["shieldupgrade"]
           }
         }
@@ -258,7 +270,7 @@
           "upgrades": {
             "talent": ["squadleader"],
             "missile": ["clustermissiles"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "modification": ["shieldupgrade"]
           }
         }
@@ -283,7 +295,7 @@
           "upgrades": {
             "title": ["st321"],
             "cannon": ["ioncannon"],
-            "system": ["collisiondetector"],
+            "sensor": ["collisiondetector"],
             "crew": ["darthvader", "freelanceslicer"]
           }
         }
@@ -296,9 +308,9 @@
           "id": "captainkagi",
           "upgrades": {
             "cannon": ["tractorbeam"],
-            "system": ["collisiondetector"],
+            "sensor": ["collisiondetector"],
             "crew": ["emperorpalpatine"],
-            "modificication": ["shieldupgrade", "staticdischargevanes"]
+            "modification": ["shieldupgrade", "staticdischargevanes"]
           }
         }
       ]
@@ -310,7 +322,7 @@
           "id": "lieutenantsai",
           "upgrades": {
             "cannon": ["jammingbeam"],
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "crew": ["cienaree", "gnkgonkdroid"]
           }
         }
@@ -388,7 +400,7 @@
           "id": "whisper",
           "upgrades": {
             "talent": ["juke"],
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "crew": ["agentkallus"],
             "modification": ["stealthdevice"]
           }
@@ -402,7 +414,7 @@
           "id": "sigmasquadronace",
           "upgrades": {
             "talent": ["predator"],
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "crew": ["grandinquisitor"]
           }
         }
@@ -415,7 +427,7 @@
           "id": "echo",
           "upgrades": {
             "talent": ["lonewolf"],
-            "system": ["collisiondetector"],
+            "sensor": ["collisiondetector"],
             "crew": ["perceptivecopilot"],
             "modification": ["stealthdevice"]
           }
@@ -429,6 +441,19 @@
           "id": "imdaartestpilot",
           "upgrades": {
             "crew": ["moffjerjerrod"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 3,
+      "pilots": [
+        {
+          "id": "duchess",
+          "upgrades": {
+            "talent": ["outmaneuver"],
+            "device": ["connernets"],
+            "modification": ["afterburners", "hullupgrade"]
           }
         }
       ]
@@ -451,9 +476,35 @@
         {
           "id": "blacksquadronscout",
           "upgrades": {
+            "talent": ["predator"],
+            "device": ["connernets"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
+          "id": "blacksquadronscout",
+          "upgrades": {
             "gunner": ["skilledbombardier"],
             "device": ["proximitymines"],
             "modification": ["hullupgrade"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 3,
+      "pilots": [
+        {
+          "id": "countdown",
+          "upgrades": {
+            "talent": ["elusive"],
+            "device": ["protonbombs"],
+            "gunner": ["skilledbombardier"],
+            "modification": ["shieldupgrade"]
           }
         }
       ]
@@ -470,18 +521,13 @@
       ]
     },
     {
-      "threat": 3,
+      "threat": 2,
       "pilots": [
         {
-          "id": "planetarysentinel",
+          "id": "puresabacc",
           "upgrades": {
-            "device": ["connernets"]
-          }
-        },
-        {
-          "id": "planetarysentinel",
-          "upgrades": {
-            "device": ["connernets"]
+            "talent": ["trickshot"],
+            "modification": ["shieldupgrade"]
           }
         }
       ]
@@ -493,6 +539,36 @@
           "id": "puresabacc",
           "upgrades": {
             "modification": ["stealthdevice"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 3,
+      "pilots": [
+        {
+          "id": "planetarysentinel",
+          "upgrades": {
+            "gunner": ["skilledbombardier"],
+            "device": ["protonbombs"],
+            "modification": ["hullupgrade"]
+          }
+        }
+      ]
+    },
+    {
+      "threat": 2,
+      "pilots": [
+        {
+          "id": "planetarysentinel",
+          "upgrades": {
+            "device": ["connernets"]
+          }
+        },
+        {
+          "id": "planetarysentinel",
+          "upgrades": {
+            "device": ["connernets"]
           }
         }
       ]
@@ -524,7 +600,7 @@
           "id": "rexlerbrath",
           "upgrades": {
             "talent": ["juke"],
-            "system": ["collisiondetector"],
+            "sensor": ["collisiondetector"],
             "missile": ["clustermissiles"]
           }
         }
@@ -548,7 +624,7 @@
           "id": "colonelvessery",
           "upgrades": {
             "talent": ["juke"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "missile": ["clustermissiles"]
           }
         }
@@ -561,7 +637,7 @@
           "id": "onyxsquadronace",
           "upgrades": {
             "talent": ["elusive"],
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "missile": ["protonrockets"]
           }
         }
@@ -775,7 +851,7 @@
           "id": "nusquadronpilot",
           "upgrades": {
             "torpedo": ["protontorpedoes"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "configuration": ["os1arsenalloadout"],
             "modification": ["advancedslam"]
           }
@@ -803,7 +879,7 @@
           "id": "rhosquadronpilot",
           "upgrades": {
             "missile": ["homingmissiles"],
-            "system": ["firecontrolsystem"],
+            "sensor": ["firecontrolsystem"],
             "cannon": ["ioncannon"],
             "configuration": ["xg1assaultconfiguration"],
             "modification": ["advancedslam"]
@@ -818,8 +894,8 @@
           "id": "deathrain",
           "upgrades": {
             "missile": ["homingmissiles"],
-            "system": ["trajectorysimulator"],
-            "configuration": ["bombletgenerator"],
+            "sensor": ["trajectorysimulator"],
+            "device": ["bombletgenerator"],
             "modification": ["ablativeplating"]
           }
         }
@@ -832,7 +908,7 @@
           "id": "cutlasssquadronpilot",
           "upgrades": {
             "missile": ["ionmissiles"],
-            "system": ["trajectorysimulator"],
+            "sensor": ["trajectorysimulator"],
             "gunner": ["skilledbombardier"],
             "device": ["protonbombs"]
           }
@@ -858,7 +934,7 @@
           "id": "cutlasssquadronpilot",
           "upgrades": {
             "missile": ["protonrockets"],
-            "system": ["advancedsensors"],
+            "sensor": ["advancedsensors"],
             "device": ["connernets"]
           }
         }

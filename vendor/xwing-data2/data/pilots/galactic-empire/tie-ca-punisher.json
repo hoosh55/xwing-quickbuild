@@ -20,6 +20,9 @@
     "3YR",
     "4KR"
   ],
+  "dialCodes": [
+    "TPu"
+  ],
   "faction": "Galactic Empire",
   "stats": [
     { "arc": "Front Arc", "type": "attack", "value": 2 },
@@ -90,7 +93,7 @@
       "name": "Cutlass Squadron Pilot",
       "initiative": 2,
       "limited": 0,
-      "cost": 38,
+      "cost": 36,
       "xws": "cutlasssquadronpilot",
       "text": "The TIE punisher's design builds upon the success of the TIE bomber, adding shielding, a second bomb chute, and three additional ordnance pods, each equipped with a twin ion engine.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_141.png",

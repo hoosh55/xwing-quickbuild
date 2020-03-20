@@ -7,7 +7,7 @@
       {
         "title": "Composure",
         "type": "Talent",
-        "ability": "After you fail an action, if you have no green tokens, you may perform a [Focus] action.",
+        "ability": "After you fail an action, if you have no green tokens, you may perform a [Focus] action. If you do, you cannot perform additional actions this round.",
         "slots": ["Talent"],
         "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Upgrade_156.png",
         "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/Card_art_XW_U_156.jpg",
@@ -16,7 +16,7 @@
     ],
     "cost": { "value": 1 },
     "restrictions": [{ "action": { "type": "Focus" } }],
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "Crack Shot",
@@ -35,7 +35,7 @@
       }
     ],
     "cost": { "value": 1 },
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "Daredevil",
@@ -52,7 +52,7 @@
         "ffg": 231
       }
     ],
-    "cost": { "value": 3 },
+    "cost": { "value": 2 },
     "restrictions": [
       { "sizes": ["Small"] },
       { "action": { "type": "Boost", "difficulty": "White" } }
@@ -73,8 +73,7 @@
         "grants": [
           {
             "type": "action",
-            "value": { "type": "Evade", "difficulty": "Red" },
-            "amount": 1
+            "value": { "type": "Evade", "difficulty": "Red" }
           }
         ],
         "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Upgrade_3.png",
@@ -82,7 +81,7 @@
         "ffg": 232
       }
     ],
-    "cost": { "value": 3 },
+    "cost": { "value": 4 },
     "restrictions": [{ "sizes": ["Small", "Medium"] }],
     "hyperspace": false
   },
@@ -104,7 +103,7 @@
     ],
     "cost": { "value": 3 },
     "restrictions": [{ "sizes": ["Small", "Medium"] }],
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "Expert Handling",
@@ -120,8 +119,7 @@
         "grants": [
           {
             "type": "action",
-            "value": { "type": "Barrel Roll", "difficulty": "White" },
-            "amount": 1
+            "value": { "type": "Barrel Roll", "difficulty": "White" }
           }
         ],
         "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Upgrade_5.png",
@@ -131,7 +129,7 @@
     ],
     "cost": {
       "variable": "size",
-      "values": { "Small": 2, "Medium": 4, "Large": 6 }
+      "values": { "Small": 2, "Medium": 3, "Large": 4 }
     },
     "restrictions": [
       { "action": { "type": "Barrel Roll", "difficulty": "Red" } }
@@ -147,9 +145,10 @@
         "title": "Fanatical",
         "type": "Talent",
         "ability": "While you perform a primary attack, if you are not shielded, you may change 1 [Focus] result to a [Hit] result.",
-        "image": "https://images-cdn.fantasyflightgames.com/filer_public/6d/44/6d440bea-11dd-4e4c-b7ef-167a4b6d23e2/swz18_a1_fanatical.png",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/8b164bdb2b401b6741519f6c6e067550.png",
         "slots": ["Talent"],
-        "ffg": 459
+        "ffg": 459,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/0a7cac152b045daf71fa5d28504e54b4.jpg"
       }
     ],
     "cost": { "value": 2 },
@@ -233,9 +232,9 @@
         "ffg": 237
       }
     ],
-    "cost": { "value": 5 },
+    "cost": { "value": 7 },
     "restrictions": [{ "sizes": ["Small", "Medium"] }],
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "Lone Wolf",
@@ -254,7 +253,7 @@
       }
     ],
     "cost": { "value": 5 },
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "Marksmanship",
@@ -272,7 +271,7 @@
       }
     ],
     "cost": { "value": 1 },
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "Outmaneuver",
@@ -308,7 +307,7 @@
       }
     ],
     "cost": { "value": 2 },
-    "hyperspace": true
+    "hyperspace": false
   },
   {
     "name": "Ruthless",
@@ -337,14 +336,14 @@
       {
         "title": "Saturation Salvo",
         "type": "Talent",
-        "ability": "While you perform a [Torpedo] or [Missile] attack, you may spend 1 charge from that upgrade. If you do, choose two defence dice. The defender must reroll those dice.",
+        "ability": "While you perform a [Torpedo] or [Missile] attack, you may spend 1 [Charge] from that upgrade. If you do, choose two defense dice. The defender must reroll those dice.",
         "slots": ["Talent"],
         "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Upgrade_14.png",
         "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/Card_art_XW_U_14.jpg",
         "ffg": 243
       }
     ],
-    "cost": { "value": 6 },
+    "cost": { "value": 5 },
     "restrictions": [{ "action": { "type": "Reload" } }],
     "hyperspace": false
   },
@@ -381,8 +380,7 @@
         "grants": [
           {
             "type": "action",
-            "value": { "type": "Coordinate", "difficulty": "Red" },
-            "amount": 1
+            "value": { "type": "Coordinate", "difficulty": "Red" }
           }
         ],
         "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Upgrade_16.png",
@@ -411,8 +409,11 @@
         "ffg": 246
       }
     ],
-    "cost": { "value": 3 },
-    "hyperspace": true
+    "cost": {
+      "variable": "initiative",
+      "values": { "0": 3, "1": 3, "2": 3, "3": 3, "4": 3, "5": 4, "6": 5 }
+    },
+    "hyperspace": false
   },
   {
     "name": "Trick Shot",
@@ -429,8 +430,8 @@
         "ffg": 247
       }
     ],
-    "cost": { "value": 2 },
-    "hyperspace": true
+    "cost": { "value": 4 },
+    "hyperspace": false
   },
   {
     "name": "Treacherous",
@@ -443,10 +444,138 @@
         "ability": "While you defend, you may choose a ship obstructing the attack and spend 1 [Charge]. If you do, cancel 1 [Hit] or [Critical Hit] result, and the ship you chose gains 1 strain token. After a ship at range 0-3 is destroyed, recover 1 [Charge].",
         "slots": ["Talent"],
         "charges": { "value": 1, "recovers": 0 },
-        "image": "https://images-cdn.fantasyflightgames.com/filer_public/78/90/78904e32-b5ad-4fd5-989e-6040595b37b9/swz29_a2_treacherous.png"
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/a10d907fea50e32ab28d924c67486d37.png",
+        "ffg": 529,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/406e6007268488c36fc9066fb0a5d70f.jpg"
       }
     ],
+    "hyperspace": true,
+    "restrictions": [{ "factions": ["Separatist Alliance"] }],
+    "cost": { "value": 2 }
+  },
+  {
+    "name": "Dedicated",
+    "xws": "dedicated",
+    "limited": 0,
+    "sides": [
+      {
+        "title": "Dedicated",
+        "type": "Talent",
+        "ability": "While another friendly ship in your [Left Arc] or [Right Arc] at range 0-2 defends, if it is limited or has the Dedicated upgrade and you are not strained, you may gain 1 strain token. If you do, the defender rerolls 1 of their blank results.",
+        "slots": ["Talent"],
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/31c6723d7e5670c257acfa8788160437.png",
+        "ffg": 544,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/21b00eaf0d2f447db8fc7b2dc69222ab.jpg"
+      }
+    ],
+    "hyperspace": true,
+    "restrictions": [
+      { "factions": ["Galactic Republic"] },
+      { "non-limited": true }
+    ],
+    "cost": { "value": 1 }
+  },
+  {
+    "name": "Ensnare",
+    "xws": "ensnare",
+    "limited": 0,
+    "sides": [
+      {
+        "title": "Ensnare",
+        "type": "Talent",
+        "slots": ["Talent"],
+        "ability": "At the end of the Activation Phase, if you are tractored, you may choose 1 ship in your [Single Turret Arc] arc at range 0-1. Transfer 1 tractor token to it.",
+        "ffg": 610,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/9513320be3bb150bb8ee6d3504e0ed01.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/5d7e0560460a1d91281537a658ddfc86.png"
+      }
+    ],
+    "cost": {
+      "variable": "initiative",
+      "values": {
+        "0": 12,
+        "1": 12,
+        "2": 12,
+        "3": 12,
+        "4": 14,
+        "5": 21,
+        "6": 28
+      }
+    },
     "hyperspace": false,
-    "restrictions": [{ "factions": ["Separatist Alliance"] }]
+    "restrictions": [{ "ships": ["nantexclassstarfighter"] }]
+  },
+  {
+    "name": "Snap Shot",
+    "limited": 0,
+    "xws": "snapshot",
+    "hyperspace": true,
+    "cost": {
+      "variable": "size",
+      "values": { "Small": 7, "Medium": 8, "Large": 9 }
+    },
+    "sides": [
+      {
+        "ability": "After an enemy ship executes a maneuver, you may perform this attack against it as a bonus attack. Attack: Your dice cannot be modified.",
+        "title": "Snap Shot",
+        "type": "Talent",
+        "slots": ["Talent"],
+        "ffg": 612,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/ec959ee48f953dbde71aa7c89d0b54bf.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/fed45c0416dfd298d9433c4608e99b7e.png",
+        "attack": {
+          "arc": "Front Arc",
+          "value": 2,
+          "minrange": 2,
+          "maxrange": 2,
+          "ordnance": true
+        }
+      }
+    ]
+  },
+  {
+    "sides": [
+      {
+        "ffg": 611,
+        "title": "Gravitic Deflection",
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/8bcd2006892a98b5b29d9aba67733cb6.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/50ec6aa5a267ece16d36533f4efe2bb0.png",
+        "ability": "While you defend, you may reroll 1 defense die for each tractored ship in the attack arc.",
+        "slots": ["Talent"],
+        "type": "Talent"
+      }
+    ],
+    "name": "Gravitic Deflection",
+    "limited": 0,
+    "cost": { "value": 5 },
+    "hyperspace": true,
+    "xws": "graviticdeflection"
+  },
+  {
+    "name": "Proud Tradition",
+    "limited": 0,
+    "xws": "proudtradition",
+    "hyperspace": true,
+    "sides": [
+      {
+        "ability": "Setup: Equip this side faceup. While you have 2 or fewer stress tokens, you may perform [Focus] actions even while stressed. After you perform an attack, if you are stressed, the defender may spend 1 focus token or suffer 1 [Critical Hit] damage to flip this card.",
+        "title": "Proud Tradition",
+        "type": "Talent",
+        "slots": ["Talent"],
+        "ffg": 653,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/8f9f85aa00fb260336b9938e2a3f7c33.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/09ec8bb3b37800437bbff7963db6aec6.png"
+      },
+      {
+        "ability": "Treat your [Focus] actions as red.",
+        "title": "False Tradition",
+        "type": "Talent",
+        "slots": ["Talent"],
+        "ffg": 652,
+        "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/30486dca1780008aea8c4c905f44ead3.jpg",
+        "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/a060961e9ee792e605c75aaf6d65ad34.png"
+      }
+    ],
+    "cost": { "value": 2 }
   }
 ]

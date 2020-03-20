@@ -23,6 +23,9 @@
     "4KR",
     "5FW"
   ],
+  "dialCodes": [
+    "TAx"
+  ],
   "faction": "Galactic Empire",
   "stats": [
     { "arc": "Front Arc", "type": "attack", "value": 2 },
@@ -39,14 +42,14 @@
     { "difficulty": "White", "type": "Lock" },
     { "difficulty": "White", "type": "Barrel Roll" }
   ],
-  "icon": "https://sb-cdn.fantasyflightgames.com/ship_types/I_TIEAdvancedPrototype.png",
+  "icon": "https://sb-cdn.fantasyflightgames.com/ship_types/I_TIEAdvanced.png",
   "pilots": [
     {
       "name": "Darth Vader",
       "caption": "Black Leader",
       "initiative": 6,
       "limited": 1,
-      "cost": 65,
+      "cost": 67,
       "xws": "darthvader",
       "ability": "After you perform an action, you may spend 1 [Force] to perform an action.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_93.png",
@@ -71,7 +74,7 @@
       "caption": "Servant of the Empire",
       "initiative": 5,
       "limited": 1,
-      "cost": 46,
+      "cost": 45,
       "xws": "maarekstele",
       "ability": "While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage cards, choose 1, and discard the rest.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_94.png",
@@ -88,7 +91,7 @@
       "name": "Storm Squadron Ace",
       "initiative": 3,
       "limited": 0,
-      "cost": 40,
+      "cost": 39,
       "xws": "stormsquadronace",
       "text": "The TIE Advanced x1 was produced in limited quantities, but Sienar engineers incorporated many of its best qualities into their next TIE model: the TIE Interceptor.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_97.png",
@@ -105,7 +108,7 @@
       "name": "Tempest Squadron Pilot",
       "initiative": 2,
       "limited": 0,
-      "cost": 38,
+      "cost": 36,
       "xws": "tempestsquadronpilot",
       "text": "The TIE Advanced improved on the popular TIE/ln design by adding shielding, better weapons systems, curved solar panels, and a hyperdrive.",
       "alt": [
@@ -129,7 +132,7 @@
       "caption": "Ambitious Engineer",
       "initiative": 4,
       "limited": 1,
-      "cost": 45,
+      "cost": 44,
       "xws": "vedfoslo",
       "ability": "While you execute a maneuver, you may execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_95.png",
@@ -147,7 +150,7 @@
       "caption": "Pitiless Administrator",
       "initiative": 3,
       "limited": 1,
-      "cost": 42,
+      "cost": 41,
       "xws": "zertikstrom",
       "ability": "During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage cards.",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/Card_Pilot_96.png",
