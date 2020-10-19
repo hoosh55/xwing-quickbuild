@@ -33,8 +33,6 @@
   }
 
   body {
-    background-image: url("./img/stardust.png");
-    background-repeat: repeat;
   }
 
   .threatBlock {
@@ -52,8 +50,6 @@
   }
 
   .pilotTitle {
-    text-align: center;
-    margin-bottom: 4px;
     font-family: 'bank-gothic-md-bt';
     font-variant: small-caps;
   }
@@ -86,7 +82,6 @@
     font-family: XWingShip;
     font-style: normal;
     font-size: 1.5em;
-    text-align: center;
   }
 
   .shipSelect--option .md-text {
@@ -230,8 +225,53 @@
     </div>
   </md-toolbar>
 
-  <div layout="row" layout-wrap flex style="overflow-y: auto;"><!--| filter:costFilter-->
-    <div ng-repeat="build in data.quickBuilds | orderBy:quickBuildOrder.expression:quickBuildOrder.reverse | filter:selectedFilter | filter:searchFilter" flex-gt-md="25" flex-gt-sm="33" flex-gt-xs="50" flex="100">
+  <div layout="row" flex>
+    <div style="overflow-y: auto;">
+      <div layout="row" layout-align="space-between center" flex ng-repeat="build in data.quickBuilds | orderBy:quickBuildOrder.expression:quickBuildOrder.reverse | filter:selectedFilter | filter:searchFilter" style="border-bottom: 1px solid #ccc; padding: 1em;">
+        <div flex="50" layout="column">
+          <div layout="row" layout-align="start center" ng-repeat="pilot in build.pilots">
+            <div flex="50" class="title clickable" ng-click="showCard($event, pilot)">
+              <i class="xwing-miniatures-font xwing-miniatures-font-unique" ng-repeat="l in getArray(pilot.limited) track by $index" style="margin-right: 8px;"></i>{{pilot.name}}
+            </div>
+            <div flex="50" style="padding: 8px 0;">
+              <div class="clickable" ng-repeat="upgrade in pilot.upgrades" ng-click="showCard($event, upgrade)">
+                <i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(upgrade.type)}}"></i> {{upgrade.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div flex="25" layout="row" layout-align="center center">
+          <div class="threatBlock" ng-style="{'background-color':getThreatColor(build.threat),'border-color':getThreatColor(build.threat)}" ng-class="{inactive: $index >= build.threat}" ng-repeat="t in getArray(6) track by $index"></div>
+        </div>
+        <div flex="25">
+          <md-button ng-click="addBuild(build)" ng-hide="(currentListIDs.indexOf(build.id) > -1 && build.unique)" ng-disabled="(totalThreat + build.threat > 8)">Add</md-button>
+          <md-button ng-click="removeBuild(build)" ng-show="currentListIDs.indexOf(build.id) > -1" ng-click="removeBuild(build)">Remove</md-button>
+        </div>
+      </tr>
+    </div>
+    <div style="overflow-y: auto;">
+      <md-list class="quickbuildList">
+        <md-list-item ng-repeat="build in currentList track by $index" layout="row">
+          <div layout="column" flex="65">
+            <div layout="row" layout-align="start center" ng-repeat="pilot in build.pilots">
+              <div flex="33" class="title">{{pilot.ship}}</div>
+              <div flex="33" class="title"><i class="xwing-miniatures-font xwing-miniatures-font-unique" ng-repeat="l in getArray(pilot.limited) track by $index" style="margin-right: 8px;"></i>{{pilot.name}}</div>
+              <div flex="33" style="padding: 8px 0;">
+                <div ng-repeat="upgrade in pilot.upgrades">
+                  <i class="xwing-miniatures-font xwing-miniatures-font-{{getIcon(upgrade.type)}}"></i> {{upgrade.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div flex="30" layout="row" layout-align="center center">
+            <div class="threatBlock" ng-style="{'background-color':getThreatColor(build.threat),'border-color':getThreatColor(build.threat)}" ng-class="{inactive: $index >= build.threat}" ng-repeat="t in getArray(6) track by $index"></div>
+          </div>
+          <md-button flex="5" ng-click="removeBuild(build)">X</md-button>
+        </md-list-item>
+      </md-list>
+      <md-divider></md-divider>
+    </div>
+    <div style="display:none;" ng-repeat="build in data.quickBuilds | orderBy:quickBuildOrder.expression:quickBuildOrder.reverse | filter:selectedFilter | filter:searchFilter" flex-gt-md="25" flex-gt-sm="33" flex-gt-xs="50" flex="100">
       <md-card class="pilotCard" ng-class="{'active':!((currentListIDs.indexOf(build.id) > -1 && build.unique) || (totalThreat + build.threat > 8))}">
         <!--<img ng-src="{{build.pilots[0].artwork}}" class="md-card-image" alt="{{build.pilots[0].name}}">-->
         <div layout="column" style="padding: 24px 16px 16px;">
